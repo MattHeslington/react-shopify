@@ -3,12 +3,19 @@ import { ShopContext } from '../context/shopContext'
 
 const Home = () => {
 
-    const { test } = useContext(ShopContext)
+    const { fetchProducts, products } = useContext(ShopContext)
 
+    useEffect(() => {
+        fetchProducts()
+        return () => {
+
+        };
+    }, [fetchProducts])
+
+    if(!products) return <div>loading</div>
     return (
         <div>
-            Home
-            {test}
+            we have products
         </div>
     )
 }
